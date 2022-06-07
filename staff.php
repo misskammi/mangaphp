@@ -1,9 +1,12 @@
 <link rel="stylesheet" href="style.css">
 <img class="baner" src="fotki/baner.png" alt="">
+
+<div class="wszystko">
+<div class="pudlo">
 <form action="staff.php" method="POST">
   <label for="login3">Login:</label><br>
   <input type="text" name="log" id="log"><br>
-  <label for="haslo3">Haslo</label><br>
+  <label for="haslo3">Haslo:</label><br>
   <input type="text" name="haslo3" id="haslo3"><br>
   <input type="submit" value="Zaloguj się">
 </form>
@@ -22,6 +25,7 @@
              </form>';
 
          } else {
-             echo "or die";
+             echo "";
          }
 ?>
+</div></div>

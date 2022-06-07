@@ -11,6 +11,9 @@ body {
     width: 95%;
     height: 150px;
 }
+a:link {
+    color: #431d0a;
+}
 .wszystko {
     margin-top: 20px;
     margin-left: auto;

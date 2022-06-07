@@ -14,7 +14,6 @@
 
  <input type="submit" value="Zaloguj się">
 </form>
-</div>
 
 <?php
          $db = new mysqli("localhost", "root", "", "manga");
@@ -25,6 +24,7 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
          if($result->num_rows >= 1) {
              $klientresult = $result->fetch_assoc();
              $klientid = $klientresult['id'];
+             echo "Logowanie powiodło się!";
              echo '<form action = "shop.php" method="POST">
              <input type="submit" value="Przejdź do sklepu!">
              </form>';
@@ -32,6 +32,7 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
              echo "";
          }
 ?>
+</div>
 
 
 
@@ -52,7 +53,6 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
     <input type="submit" value="Zarejestruj się"><br>
     </label>
 </form>
-</div>
 
 <?php
 
@@ -60,10 +60,14 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
         $q = $db->prepare("INSERT INTO klient VALUES (NULL, ?, ?, ?, ?, ?)");
         $q->bind_param("sssss", $_REQUEST['email2'], $_REQUEST['login2'], $_REQUEST['password2'], $_REQUEST['name2'], $_REQUEST['surname2']);
         $q->execute();
-        echo "Rejestracja powiodła się! Teraz możesz się zalogować";
+        echo "Rejestracja powiodła się! Teraz możesz zalogować się";
     } else {
         echo '';
     }
 
 ?>
+</div>
+</div>
+<div class="prac">
+    <p align="center"> Logowanie na zaplecze <a href="staff.php">o tu!</a></p>
 </div>
