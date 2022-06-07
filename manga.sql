@@ -1,21 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 06 Cze 2022, 19:27
--- Wersja serwera: 10.4.21-MariaDB
--- Wersja PHP: 8.0.12
+-- Czas generowania: 07 Cze 2022, 13:05
+-- Wersja serwera: 10.4.24-MariaDB
+-- Wersja PHP: 8.0.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Baza danych: `manga`
@@ -36,6 +30,13 @@ CREATE TABLE `klient` (
   `nazwisko` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Zrzut danych tabeli `klient`
+--
+
+INSERT INTO `klient` (`id`, `email`, `login`, `haslo`, `imie`, `nazwisko`) VALUES
+(1, 'klient1@gmail.com', 'klient1', '1234', 'klient', 'jeden');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +50,13 @@ CREATE TABLE `pracownicy` (
   `kto` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Zrzut danych tabeli `pracownicy`
+--
+
+INSERT INTO `pracownicy` (`id`, `login`, `haslo`, `kto`) VALUES
+(1, 'pracownik1', '1234', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -60,8 +68,20 @@ CREATE TABLE `produkty` (
   `nazwa` varchar(50) NOT NULL,
   `dostepnosc` tinyint(1) DEFAULT NULL,
   `ilosc` int(3) NOT NULL,
-  `cena` int(3) NOT NULL
+  `cena` decimal(4,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `produkty`
+--
+
+INSERT INTO `produkty` (`id`, `nazwa`, `dostepnosc`, `ilosc`, `cena`) VALUES
+(1, 'Citrus #01', 1, 10, '20.99'),
+(2, 'Citrus #02', 1, 10, '20.99'),
+(3, 'Citrus #03', 1, 10, '20.99'),
+(4, 'Citrus #04', 1, 10, '20.99'),
+(5, 'Citrus #05', 1, 10, '20.99'),
+(6, 'Citrus #06', 1, 10, '20.99');
 
 -- --------------------------------------------------------
 
@@ -102,7 +122,9 @@ ALTER TABLE `produkty`
 -- Indeksy dla tabeli `zamowienia`
 --
 ALTER TABLE `zamowienia`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idklient` (`idklient`),
+  ADD KEY `idprodukt` (`idprodukt`);
 
 --
 -- AUTO_INCREMENT dla zrzuconych tabel
@@ -112,27 +134,34 @@ ALTER TABLE `zamowienia`
 -- AUTO_INCREMENT dla tabeli `klient`
 --
 ALTER TABLE `klient`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `produkty`
 --
 ALTER TABLE `produkty`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT dla tabeli `zamowienia`
 --
 ALTER TABLE `zamowienia`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `zamowienia`
+--
+ALTER TABLE `zamowienia`
+  ADD CONSTRAINT `zamowienia_ibfk_1` FOREIGN KEY (`idklient`) REFERENCES `klient` (`id`),
+  ADD CONSTRAINT `zamowienia_ibfk_2` FOREIGN KEY (`idprodukt`) REFERENCES `produkty` (`id`);
+COMMIT;
