@@ -1,4 +1,8 @@
+<link rel="stylesheet" href="style.css">
+<img class="baner" src="fotki/baner.png" alt="">
+<div class="wszystko">
 
+<div class="pudlo">
 <h1>Login</h1>
 <form action="newclient.php" method="post">
  <label for="email">Email:</label><br>
@@ -20,18 +24,20 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
          if($result->num_rows >= 1) {
              $klientresult = $result->fetch_assoc();
              $klientid = $klientresult['id'];
+             echo "Logowanie powiodło się!";
              echo '<form action = "shop.php" method="POST">
-             <input type="submit" value="Przejdź do sklepu">
+             <input type="submit" value="Przejdź do sklepu!">
              </form>';
          } else {
-             echo "or die";
+             echo "";
          }
 ?>
+</div>
 
 
 
 
-
+<div class="pudlo">
 <h1>Rejestracja</h1>
 <form action="newclient.php" method="POST">
     <label for="email2">Email</label><br>
@@ -47,17 +53,21 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
     <input type="submit" value="Zarejestruj się"><br>
     </label>
 </form>
+
 <?php
 
     if(!empty($_REQUEST['login2'])&& !empty($_POST['password2'])&& !empty($_REQUEST['email2'])&& !empty($_REQUEST['name2'])&& !empty($_REQUEST['surname2']) !== "") {
         $q = $db->prepare("INSERT INTO klient VALUES (NULL, ?, ?, ?, ?, ?)");
         $q->bind_param("sssss", $_REQUEST['email2'], $_REQUEST['login2'], $_REQUEST['password2'], $_REQUEST['name2'], $_REQUEST['surname2']);
         $q->execute();
-        echo "congrats";
+        echo "Rejestracja powiodła się! Teraz możesz zalogować się";
     } else {
-        echo 'or die';
+        echo '';
     }
-    
-    
 
 ?>
+</div>
+</div>
+<div class="prac">
+    <p align="center"> Logowanie na zaplecze <a href="staff.php">o tu!</a></p>
+</div>
