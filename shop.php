@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-=======
-<link rel="stylesheet" href="style.css">
-<img class="baner" src="fotki/baner.png" alt="">
-<div>
-    <div>
-    <img src="fotki/manga1.jpg" alt="citrus" height="200px" >
-    </div>
-    <div>
-        <form action="payment.php">
-        <input type="submit" value="BUY" name="cit1" id="cit1">
-    </form>
-    </div>
-</div>
->>>>>>> b4f9aa2220ea1eeb7bffd7fb31b585b70145c6aa
+
 
 <form action="shop.php" method="POST">
     <img src="fotki/manga1.jpg" alt="cit">
