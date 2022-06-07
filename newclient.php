@@ -1,46 +1,31 @@
-<?php
-    $db = new mysqli("localhost", "root", "", "manga");
-   
-      $q = $db->prepare("SELECT * FROM klient");
-    if($q && $q->execute()) {
-        $result = $q->get_result();
-        $clientlist = array();
-        while($client = $result->fetch_assoc()) {
-            $clientemail = $client['email'];
-            $clientid = $client['id'];
-            $clientlogin = $client['login'];
-            $clientpass = $client['haslo'];
-            $clientname = $client['imie'];
-            $clientsur = $client['nazwisko'];
-        }
-    } 
-   /* $q -> $db->prepare("SELECT * FROM klient WHERE id = ?");
-    $q->bind_param("i", $clientid);
-*/
-        
 
-
-
-
-?>
 <h1>Login</h1>
-<form action="shop.php" method="post">
+<form action="newclient.php" method="post">
  <label for="email">Email:</label><br>
  <input type="text" name="email" id="email"><br>
  <label for="login">Login:</label><br>
  <input type="text" name="login" id="login"><br>
  <label for="password">Haslo:</label><br>
  <input type="text" name="password" id="password"><br>
- <input type="hidden" name="clientID"
-                value="<?php echo $clientID ?>">
+
  <input type="submit" value="Zaloguj się">
 </form>
 
 <?php
-        if(isset($_REQUEST['login']) && isset($_REQUEST['password'])) {
-            $ss;
-        }
-    
+         $db = new mysqli("localhost", "root", "", "manga");
+         $q = $db->prepare("SELECT * FROM klient WHERE email = ?  AND `login` = ? AND haslo = ?");
+$q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['password']);
+         $q->execute();
+         $result = $q->get_result();
+         if($result->num_rows >= 1) {
+             $klientresult = $result->fetch_assoc();
+             $klientid = $klientresult['id'];
+             echo '<form action = "shop.php" method="POST">
+             <input type="submit" value="Przejdź do sklepu">
+             </form>';
+         } else {
+             echo "or die";
+         }
 ?>
 
 
@@ -63,7 +48,8 @@
     </label>
 </form>
 <?php
-    if(isset($_REQUEST['login2'])&&isset($_REQUEST['password2'])) {
+
+    if(!empty($_REQUEST['login2'])&& !empty($_POST['password2'])&& !empty($_REQUEST['email2'])&& !empty($_REQUEST['name2'])&& !empty($_REQUEST['surname2']) !== "") {
         $q = $db->prepare("INSERT INTO klient VALUES (NULL, ?, ?, ?, ?, ?)");
         $q->bind_param("sssss", $_REQUEST['email2'], $_REQUEST['login2'], $_REQUEST['password2'], $_REQUEST['name2'], $_REQUEST['surname2']);
         $q->execute();
@@ -72,4 +58,6 @@
         echo 'or die';
     }
     
+    
+
 ?>
