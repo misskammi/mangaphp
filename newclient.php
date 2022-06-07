@@ -6,7 +6,7 @@
 <h1>Login</h1>
 <form action="newclient.php" method="post">
  <label for="email">Email:</label><br>
- <input type="text" name="email" id="email"><br>
+ <input type="email" name="email" id="email"><br>
  <label for="login">Login:</label><br>
  <input type="text" name="login" id="login"><br>
  <label for="password">Haslo:</label><br>
@@ -41,7 +41,7 @@ $q->bind_param("sss", $_REQUEST['email'], $_REQUEST['login'], $_REQUEST['passwor
 <h1>Rejestracja</h1>
 <form action="newclient.php" method="POST">
     <label for="email2">Email</label><br>
-    <input type="text" name="email2" id="email2"><br>
+    <input type="email" name="email2" id="email2"><br>
     <label for="login2">Login:</label><br>
     <input type="text" name="login2" id="login2"><br>
     <label for="password2">Haslo:</label><br>
