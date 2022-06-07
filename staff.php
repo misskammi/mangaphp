@@ -9,7 +9,7 @@
 <?php
          $db = new mysqli("localhost", "root", "", "manga");
          $q = $db->prepare("SELECT * FROM pracownicy WHERE `login` = ? AND haslo = ?");
-         $q->bind_param("ss", $_REQUEST['login3'], $_REQUEST['haslo3']);
+         $q->bind_param("ss", $_REQUEST['log'], $_REQUEST['haslo3']);
          $q->execute();
          $result = $q->get_result();
          if($result->num_rows == 1) {
