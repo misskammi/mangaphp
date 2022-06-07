@@ -1,0 +1,27 @@
+body {
+    color: #431d0a;
+    background-image: url(fotki/tlo.png);
+    background-size: cover;
+    font-family: calibri;
+}
+.baner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: 150px;
+}
+div {
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+h1 {
+    text-align: center;
+}

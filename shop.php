@@ -1,19 +1,36 @@
+<link rel="stylesheet" href="styleshop.css">
+<img class="baner" src="fotki/baner.png" alt="">
+<a href="newclient.php">strona logowania</a>
 
-
-<form action="shop.php" method="POST">
-    <img src="fotki/manga1.jpg" alt="cit">
-    <input type="text" name="count" id="count" value="count">
-    <img src="fotki/manga2.jpg" alt="cit2">
-    <input type="text" name="count2" id="count2" value="count">
-    <img src="fotki/manga3.jpg" alt="cit2">
-    <input type="text" name="count3" id="count3" value="count">
-    <img src="fotki/manga4.jpg" alt="cit2">
-    <input type="text" name="count4" id="count4" value="count">
-    <img src="fotki/manga5.jpg" alt="cit2">
-    <input type="text" name="count5" id="count5" value="count">
-    <img src="fotki/manga6.jpg" alt="cit2">
-    <input type="text" name="count6" id="count6" value="count">
-    <input type="submit" value="Submit">
+<h1> Wybierz jaką ilość chcesz kupić, kliknij "submit", podaj swój adres i kliknij "Kup" by kupić!</h1>
+<form class="flex" action="shop.php" method="POST">
+    <div>
+    <img src="fotki/manga1.jpg" alt="cit" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count" id="count" value="">
+    </div><div>
+    <img src="fotki/manga2.jpg" alt="cit2" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count2" id="count2" value="">
+    </div><div>
+    <img src="fotki/manga3.jpg" alt="cit3" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count3" id="count3" value="">
+    </div><div>
+    <img src="fotki/manga4.jpg" alt="cit4" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count4" id="count4" value="">
+    </div><div>
+    <img src="fotki/manga5.jpg" alt="cit5" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count5" id="count5" value="">
+    </div><div>
+    <img src="fotki/manga6.jpg" alt="cit6" height="300px">
+    <p>cena 20,99zł</p>
+    <input type="text" name="count6" id="count6" value="">
+    </div>
+    <div class="a">
+    <input type="submit" value="Submit"></div>
 </form>
 <?php 
         session_start();
