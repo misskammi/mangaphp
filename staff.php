@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+<img class="baner" src="fotki/baner.png" alt="">
 <form action="staff.php" method="POST">
   <label for="login3">Login:</label><br>
   <input type="text" name="log" id="log"><br>

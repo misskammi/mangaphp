@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+<img class="baner" src="fotki/baner.png" alt="">
 <div>
     <div>
     <img src="fotki/manga1.jpg" alt="citrus" height="200px" >
