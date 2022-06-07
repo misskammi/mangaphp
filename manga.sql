@@ -97,6 +97,13 @@ CREATE TABLE `zamowienia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Zrzut danych tabeli `zamowienia`
+--
+
+INSERT INTO `zamowienia` (`id`, `idklient`, `idprodukt`, `adres`) VALUES
+(1, 1, 1, 'gdansk 23');
+
+--
 -- Indeksy dla zrzutów tabel
 --
 
